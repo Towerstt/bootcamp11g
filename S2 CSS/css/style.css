@@ -1,0 +1,91 @@
+body{
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    
+}
+
+body * {
+    border: 0.5px solid blue;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+h1{
+    height: 6.7cm;
+    width:15cm;
+    background-color: #4b7ab3;
+}
+
+header{
+    background: linear-gradient(to top, #ffc6c5, #ffe7e6);
+}
+
+nav{
+    background: linear-gradient(to top, #bdefff, #e1eef3);
+    margin: 2px;
+}
+
+.t{
+    height: 40px;
+}
+
+
+div.s{
+    background: linear-gradient(to top, #dafda8, white);
+    border-color: #dafda8;
+    border-width: .5px;
+    margin:2px
+
+
+}
+
+div.s > *:not(article){
+    height:20px;
+    width: 67%;
+    margin: 5px;
+    line-height: 20px;
+}
+
+div.s header{
+    font-size: 10px;
+    border-color:#f36d6a;
+    border-left: 0px;
+}
+
+div.s section{
+    border-color: white;
+    height: 10px;
+    line-height: 10px;
+}
+
+
+
+
+article{
+    height:60px;
+    background: linear-gradient(to top, #d6c8ed, #e7e4ec);
+    border-color: #9e6af1;
+    width: 67%;
+    margin: 5px;
+    line-height: 50px;
+    border-left: 0px;
+}
+
+aside{
+    background: linear-gradient(to top, #c5c5c5, #c5c5c55b);
+    width: 30%;
+    float:right;
+    height: 112px;
+    border: 4px solid blue;
+    line-height: 116px;
+}
+
+footer{
+    background: linear-gradient(to top, #ffc18d, #f3ede8);
+}
+
+
