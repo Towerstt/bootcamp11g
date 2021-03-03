@@ -1,0 +1,92 @@
+.container-empty{
+    display:flex;
+    height: 75vh;
+    width: 98vw;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: calc(25vh/2);
+}
+.container{
+    display: flex;
+    height: 70vh;
+    width: 25vw;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px solid black;
+    margin: 1rem;
+    border-radius: 3%;
+}
+.container2{
+    display: flex;
+    height: 70vh;
+    width: 25vw;
+    background-color: rgb(255, 24, 178);
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px solid rgb(255, 24, 178);
+    margin: 1rem;
+    border-radius: 3%;
+}
+.image-tw{
+    background-image: url("https://www.iconsdb.com/icons/preview/black/twitter-xxl.png");
+    background-size: 10vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 12%;
+    width: 25%;
+}
+.image-ins{
+    background-image: url("https://cdn1.iconfinder.com/data/icons/social-media-outline-6/128/SocialMedia_Instagram-Outline-512.png");
+    background-size: 10vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15%;
+    width: 25%;
+}
+.image-yt{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/YouTube_dark_icon_%282017%29.svg/71px-YouTube_dark_icon_%282017%29.svg.png");
+    background-size: 10vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 12%;
+    width: 25%;
+}
+.nm{
+    font-family: fantasy;
+    font-size: 2.5rem;
+    text-align: center;
+    font-variant: small-caps;
+}
+.txt{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1.5rem;
+}
+.t-b{
+    color: white;
+}
+.button{
+    height: 10vh;
+    width: 23vw;
+    background-color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+}
+.button2{
+    height: 10vh;
+    width: 23vw;
+    background-color: white;
+    color: rgb(255, 24, 178);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+}
