@@ -1,0 +1,117 @@
+//Primary
+$red: hsl(0, 78%, 62%);
+$cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+
+//Neutral
+$very-dark-blue: hsl(234, 12%, 34%);
+$grayish-blue: hsl(229, 6%, 66%);
+$very-light-gray: hsl(0, 0%, 98%);
+
+//Font
+$font-size: 15px;
+$w200: 200;
+$w400: 400;
+$w600: 600;
+
+h1{
+    font-size: 21px;
+    font-weight: $w200;
+    color: $very-dark-blue;
+}
+h2{
+    font-size: 20px;
+    font-weight: bold;
+    color: $very-dark-blue;
+}
+img{
+    height: 65px;
+    width: 65px;   
+    position: relative;
+    top:20px;
+    left: 210px;
+}
+
+.absolute{
+    position: absolute;
+}
+.h-3{
+    font-size: 15px;
+    color: $grayish-blue;
+
+}
+.bg-vlg{
+    background-color: $very-light-gray;
+}
+.b-cyan{
+    border-top: 4px solid $cyan;
+}
+.b-red{
+    border-top: 4px solid $red;
+}
+.b-orange{
+    border-top: 4px solid $orange;
+}
+.b-blue{
+    border-top: 4px solid $blue;
+}
+.bx-s{
+    box-shadow: 2px 2px 10px $grayish-blue;
+}
+.height-35{
+    height: 35vh;
+
+}
+.cd-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: $very-dark-blue;
+}
+.cd-txt{
+    font-size: 15px;
+    color: $grayish-blue;
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 768px){
+    .height-35{
+        height: 18vh;
+        width: 27vw;
+    
+    }
+    img{
+        left: 15vw;
+        top: -2vh;
+        height: 50px;
+        width: 50px;
+    }
+    .wrapper{
+        display: flex;
+    }
+    .mmtt{
+        margin-top: 75px;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+    .height-35{
+        height: 30vh;
+        width: 27vw;
+    
+    }
+    img{
+        left: 18vw;
+        top: 4vh;
+        height: 50px;
+        width: 50px;
+    }
+    .wrapper{
+        display: flex;
+    }
+    .mmtt{
+        margin-top: 75px;
+    }
+
+}
