@@ -1,0 +1,199 @@
+body {
+  margin: auto auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 800px;
+  height: 400px;
+  margin: auto;
+  margin-top: calc(50vh - 200px);
+  position: relative;
+  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/background-of-green-and-healthy-grass-royalty-free-image-1586800097.jpg?crop=1xw:0.72655xh;center,top&resize=1200:*");
+}
+
+.d {
+  width: 50%;
+  height: 100%;
+  border: 2px solid white;
+  padding: 1rem;
+}
+
+.d-one {
+  position: relative;
+}
+
+.d-two {
+  position: relative;
+}
+
+.bar-one {
+  border: 1px solid red;
+  width: 5px;
+  height: 50px;
+  margin: auto 0;
+  position: absolute;
+  background-color: red;
+  -webkit-animation-name: bar-one-animation;
+          animation-name: bar-one-animation;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+.bar-two {
+  border: 1px solid blue;
+  width: 5px;
+  height: 50px;
+  margin: auto 0;
+  position: absolute;
+  left: calc(100% - 21px);
+  top: calc(50% - 25px);
+  background-color: blue;
+  -webkit-animation-name: bar-two-animation;
+          animation-name: bar-two-animation;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+.ball {
+  border: 1px solid greenyellow;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: greenyellow;
+  position: absolute;
+  left: calc(100% - 48px);
+  -webkit-animation-name: ball-animation;
+          animation-name: ball-animation;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes bar-one-animation {
+  0% {
+    top: calc(50% - 25px);
+  }
+  25% {
+    top: 0;
+  }
+  75% {
+    top: calc(100% - 50px);
+  }
+  100% {
+    top: calc(50% - 25px);
+  }
+}
+
+@keyframes bar-one-animation {
+  0% {
+    top: calc(50% - 25px);
+  }
+  25% {
+    top: 0;
+  }
+  75% {
+    top: calc(100% - 50px);
+  }
+  100% {
+    top: calc(50% - 25px);
+  }
+}
+
+@-webkit-keyframes bar-two-animation {
+  0% {
+    top: calc(50% - 25px);
+  }
+  25% {
+    top: calc(100% - 50px);
+  }
+  75% {
+    top: 0;
+  }
+  100% {
+    top: calc(50% - 25px);
+  }
+}
+
+@keyframes bar-two-animation {
+  0% {
+    top: calc(50% - 25px);
+  }
+  25% {
+    top: calc(100% - 50px);
+  }
+  75% {
+    top: 0;
+  }
+  100% {
+    top: calc(50% - 25px);
+  }
+}
+
+@-webkit-keyframes ball-animation {
+  0% {
+    left: calc(100% - 48px);
+    top: calc(50% - 24px);
+  }
+  25% {
+    left: calc(50% - 12.5px);
+    top: 25px;
+  }
+  50% {
+    left: 23px;
+    top: calc(50% - 25px);
+  }
+  75% {
+    left: calc(50% - 12.5px);
+    top: calc(100% - 25px);
+  }
+  100% {
+    left: calc(100% - 48px);
+    top: calc(50% - 24px);
+  }
+}
+
+@keyframes ball-animation {
+  0% {
+    left: calc(100% - 48px);
+    top: calc(50% - 24px);
+  }
+  25% {
+    left: calc(50% - 12.5px);
+    top: 25px;
+  }
+  50% {
+    left: 23px;
+    top: calc(50% - 25px);
+  }
+  75% {
+    left: calc(50% - 12.5px);
+    top: calc(100% - 25px);
+  }
+  100% {
+    left: calc(100% - 48px);
+    top: calc(50% - 24px);
+  }
+}
+/*# sourceMappingURL=styles.css.map */
