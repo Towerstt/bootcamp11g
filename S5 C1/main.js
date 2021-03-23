@@ -51,4 +51,3 @@ var sTwo = parseInt(prompt("Ingresa el valor del segundo lado"));
 var areaC = sOne * sTwo;
 
 sOne === sideTwo ? alert(`La figura es un cuadrado y su área es de ${areaC}`) : alert("La figura es un rectángulo y su área es de :" + areaC);
-
