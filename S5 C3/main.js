@@ -10,13 +10,11 @@ function numOfKoders(nOfKoders){
     if(answer === 'S' || answer === 's'){
         let nofExtraKoders = parseInt(prompt("¿Cuántos Koders más deseas agregar"))
         nofExtraKoders != 0 ? numOfKoders(nofExtraKoders) : alert("Ok. hasta pronto.");
-        //alert(koders);
     } else{
         alert("Ok. La lista de Koders es " + koders);
     }
     return koders;
 }
-
 function deleteKoders(koders, deleteRandom){
     let randomNumber = Math.floor(Math.random()*(koders.length)+0);
     if (deleteRandom === 'S' || deleteRandom === 's') {
@@ -32,4 +30,3 @@ let nOfKoders = parseInt(prompt("Ingresa el número de Koders a registrar"));
 kodersArray = numOfKoders(nOfKoders);
 deleteRandomK = prompt("¿Deseas eliminar algún registro al azar? (S/N)");
 deleteKoders(kodersArray, deleteRandomK);
-
