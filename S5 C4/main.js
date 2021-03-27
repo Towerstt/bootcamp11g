@@ -147,7 +147,7 @@ var productsList = [{name:"producto 1",
 // objToString(productsList)
 
 
-//Ejercicio 2.- TAREA
+//Ejercicio 2.- ------------------------------ TAREA ------------------------------
 //forEach, map, reduce, filter
 
 //1.- quiero conocer la cantidad de productos en el array
@@ -155,10 +155,14 @@ const numOfPdts = array1 => array1.length
 let nOfP = numOfPdts(productsList)
 console.log(`La lista tiene ${nOfP} elementos`);
 //2.- quiero conocer el costo total de todos los productos del array
-let totCost = 0; totCost0 = 0; totCost1 = 0;
-const costcalc = array1 => array1.forEach(element => totCost += element.price);
+const costcalc = array1 => {
+    let totCost = 0;
+    array1.map(element => totCost += element.price)[array1.length-1];
+    return totCost;}
 totalCost2= costcalc(productsList);
-alert(totalCost2);
+console.log(totalCost2);
+
+const costcalc2 = array =>{array.reduce((accum, current) => accum + current.price, 0)}
 
 
 
@@ -175,9 +179,13 @@ console.log(com.length);
 
 //4.- quiero conocer el costo por categoría
 totCostVeg = costcalc(veg);
+console.log(totCostVeg)
 totCostClo = costcalc(clo);
+console.log(totCostClo)
 totCostMis = costcalc(mis);
+console.log(totCostMis)
 totCostCom = costcalc(com);
+console.log(totCostCom)
 
 //5.- quiero un nuevo array para cada categoría
 console.log(veg);
