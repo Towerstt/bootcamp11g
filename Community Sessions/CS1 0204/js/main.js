@@ -61,3 +61,101 @@ console.log(vowels("badssad pweoif awepfk sjdfgqwuiefsdafmsñdlgpd"))
 //10.- Crear un programa que permita devolver una cadena de texto de forma inversa a la que el usuario lo ingresa.
 const reversed = string => string.split("").reverse().join("")
 console.log(reversed("Hola"))
+
+//11.- Sabiendo que una cadena de texto contine parentesis. Crear un programa que devulva la cadena que se encuentra entre los parentesis.
+const parenthesis = string =>{
+    stringSplitted = string.split(" ")
+    p = stringSplitted.filter(item => item.endsWith(")") === true).join()
+    word = p.substring(1,p.length-1)
+    console.log(word)
+}
+parenthesis("Hola soy (koder)")
+
+//12.- Crear una funcion que permita solicitar numeros al usuario por medio del prompt y no dejar de solicitarlos hasta que el usuario ya no dese ingresar más. Cáda numero debe ser ingresado a una colecion. spoiler: Puede que les sirva el metodo confim()
+// numerArray = []
+// numerArray.push(prompt("Ingresa un número"))
+// while (window.confirm("¿Quieres ingresar más números")) {
+//     numerArray.push(prompt("Ingresa un número"))
+// } alert("Muchas gracias. Tus  números fueron " + numerArray)
+
+//13.- Realizar un programa que imprima una pritamide de 1 al 10 de la siguiente forma
+//~Lo hice a 9 para que se vea bonito~
+for (let i = 1; i < 10; i++) {
+    console.log(`${(i.toString()).repeat(i)}`)
+}
+
+//14.- Realizar un program que imprima una piramida inversa.
+for (let i = 9; i > 0; i--) {
+    console.log(`${(i.toString()).repeat(i)}`)    
+}
+
+//15.- Teniendo un array de numeros. Determinar por cada elemnto si es multiplo de 4/3/5/2
+numberArray = [3,4,5,23,20,25,10]
+let m2 = []
+let m3 = []
+let m4 = []
+let m5 = []
+for (let i = 0; i < numberArray.length; i++) {
+    numberArray[i] % 5 === 0 ? m5.push(numberArray[i]) : null
+    numberArray[i] % 4 === 0 ? m4.push(numberArray[i]) : null
+    numberArray[i] % 3 === 0 ? m3.push(numberArray[i]) : null
+    numberArray[i] % 2 === 0 ? m2.push(numberArray[i]) : null
+}
+console.log("Los múltiplos de 5 son: " + m5)
+console.log("Los múltiplos de 4 son: " + m4)
+console.log("Los múltiplos de 3 son: " + m3)
+console.log("Los múltiplos de 2 son: " + m2)
+
+//16.- Solicitar al usuario un nombre por medio del prompt e ingresarlo a una colección, validando que nose repita ningún nombre.
+// const exists = () => {
+//     nameArray = []
+//     string = prompt("Ingresa un nombre")
+//     nameArray.push(string)
+//     answer = window.confirm("¿Quieres ingresar otro nombre?")
+//     while (answer === true) {
+//         string2 = prompt("Ingresa otro nombre: ")
+//         if (nameArray.indexOf(string2) !== -1) {
+//             alert("El nombre ya existe. Intenta con uno nuevo")
+//         }
+//         else{
+//             nameArray.push(string2)
+//         }
+//         answer = window.confirm("¿Quieres ingresar otro nombre?")
+//     }
+    
+//     console.log("Los nombres que ingresaste fueron " + nameArray)
+// }
+// exists()
+
+//17.- Solicitar al usuario por medio del prompt una serie de numeros saparados por algun caracter y que cada numero se agregue a una colección
+// numberArray = []
+// numbers = prompt("Ingresa los números separados por un espacio o carácter: ")
+// numbersSplitted = numbers.split(/[^\d]/)
+// console.log(numbersSplitted)
+
+//18.- Solicitar al usuario por medio del prompt nombres de frutas y guardarlas en una colección. Además solicitar al usuario un nombre usuario para poder eliminarlo del array.
+fruitsArray = []
+const deleteFruit = (array,string) => {
+    noDeleted = array.filter(item => item !== string)
+    console.log(noDeleted)
+    return noDeleted
+}
+fruit = prompt("¿Qué fruta quieres agregar?")
+fruitsArray.push(fruit)
+answer2 = window.confirm("¿Quieres ingresar otra fruta?")
+while (answer2 === true) {
+    fruit2 = prompt("Ingresa otra fruta: ")
+    fruitsArray.push(fruit2)
+    answer2 = window.confirm("¿Quieres ingresar otra fruta?")
+}
+console.log("Los frutas que ingresaste fueron " + fruitsArray)
+let newFruitArray = []
+answer3 = window.confirm("¿Quieres eliminar alguna fruta?")
+while (answer3 === true){
+    fruitToDelete = prompt("Ingresa la fruta a eliminar: ")
+    newFruitArray = deleteFruit(fruitsArray, fruitToDelete)
+    newFruitArray !== [] ? newFruitArray = deleteFruit(newFruitArray, fruitToDelete) : null
+    answer3 = window.confirm("¿Quieres eliminar alguna fruta?")
+}
+console.log("Las frutas que quedan en la lista son: " + newFruitArray)
+
