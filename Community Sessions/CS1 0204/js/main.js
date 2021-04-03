@@ -72,11 +72,11 @@ const parenthesis = string =>{
 parenthesis("Hola soy (koder)")
 
 //12.- Crear una funcion que permita solicitar numeros al usuario por medio del prompt y no dejar de solicitarlos hasta que el usuario ya no dese ingresar más. Cáda numero debe ser ingresado a una colecion. spoiler: Puede que les sirva el metodo confim()
-// numerArray = []
-// numerArray.push(prompt("Ingresa un número"))
-// while (window.confirm("¿Quieres ingresar más números")) {
-//     numerArray.push(prompt("Ingresa un número"))
-// } alert("Muchas gracias. Tus  números fueron " + numerArray)
+numerArray = []
+numerArray.push(prompt("Ingresa un número"))
+while (window.confirm("¿Quieres ingresar más números")) {
+    numerArray.push(prompt("Ingresa un número"))
+} alert("Muchas gracias. Tus  números fueron " + numerArray)
 
 //13.- Realizar un programa que imprima una pritamide de 1 al 10 de la siguiente forma
 //~Lo hice a 9 para que se vea bonito~
@@ -107,31 +107,31 @@ console.log("Los múltiplos de 3 son: " + m3)
 console.log("Los múltiplos de 2 son: " + m2)
 
 //16.- Solicitar al usuario un nombre por medio del prompt e ingresarlo a una colección, validando que nose repita ningún nombre.
-// const exists = () => {
-//     nameArray = []
-//     string = prompt("Ingresa un nombre")
-//     nameArray.push(string)
-//     answer = window.confirm("¿Quieres ingresar otro nombre?")
-//     while (answer === true) {
-//         string2 = prompt("Ingresa otro nombre: ")
-//         if (nameArray.indexOf(string2) !== -1) {
-//             alert("El nombre ya existe. Intenta con uno nuevo")
-//         }
-//         else{
-//             nameArray.push(string2)
-//         }
-//         answer = window.confirm("¿Quieres ingresar otro nombre?")
-//     }
+const exists = () => {
+    nameArray = []
+    string = prompt("Ingresa un nombre")
+    nameArray.push(string)
+    answer = window.confirm("¿Quieres ingresar otro nombre?")
+    while (answer === true) {
+        string2 = prompt("Ingresa otro nombre: ")
+        if (nameArray.indexOf(string2) !== -1) {
+            alert("El nombre ya existe. Intenta con uno nuevo")
+        }
+        else{
+            nameArray.push(string2)
+        }
+        answer = window.confirm("¿Quieres ingresar otro nombre?")
+    }
     
-//     console.log("Los nombres que ingresaste fueron " + nameArray)
-// }
-// exists()
+    console.log("Los nombres que ingresaste fueron " + nameArray)
+}
+exists()
 
 //17.- Solicitar al usuario por medio del prompt una serie de numeros saparados por algun caracter y que cada numero se agregue a una colección
-// numberArray = []
-// numbers = prompt("Ingresa los números separados por un espacio o carácter: ")
-// numbersSplitted = numbers.split(/[^\d]/)
-// console.log(numbersSplitted)
+numberArray = []
+numbers = prompt("Ingresa los números separados por un espacio o carácter: ")
+numbersSplitted = numbers.split(/[^\d]/)
+console.log(numbersSplitted)
 
 //18.- Solicitar al usuario por medio del prompt nombres de frutas y guardarlas en una colección. Además solicitar al usuario un nombre usuario para poder eliminarlo del array.
 fruitsArray = []
