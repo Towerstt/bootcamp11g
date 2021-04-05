@@ -43,7 +43,7 @@ sameWord("hola", "Hola")
 const toUpper = string => console.log(string.toUpperCase())
 
 //8.- Crear un programa que permita a una cadena de texto mostrar el signo '-' entre cada caracter
-const hyphen = string => console.log(string.split(" ").join("-"))
+const hyphen = string => console.log(string.split("").join("-"))
 hyphen("lkasnfdkjl kdsfnadsklf dslkfn dsfsad fds f sdf sdfs dfsd f")
 
 //9.- Crear un programa que devuelva la cantidad de vocales que tenga una frase dada por el usuario.
@@ -64,12 +64,12 @@ console.log(reversed("Hola"))
 
 //11.- Sabiendo que una cadena de texto contine parentesis. Crear un programa que devulva la cadena que se encuentra entre los parentesis.
 const parenthesis = string =>{
-    stringSplitted = string.split(" ")
-    p = stringSplitted.filter(item => item.endsWith(")") === true).join()
-    word = p.substring(1,p.length-1)
-    console.log(word)
+    stringSplitted = string.split("")
+    console.log(stringSplitted)
+    p = stringSplitted.slice((stringSplitted.indexOf("(")+1), stringSplitted.indexOf(")")).join("")
+    console.log(p)
 }
-parenthesis("Hola soy (koder)")
+parenthesis("Hola soy (bla bla bla bla bla)")
 
 //12.- Crear una funcion que permita solicitar numeros al usuario por medio del prompt y no dejar de solicitarlos hasta que el usuario ya no dese ingresar más. Cáda numero debe ser ingresado a una colecion. spoiler: Puede que les sirva el metodo confim()
 numerArray = []
@@ -91,16 +91,10 @@ for (let i = 9; i > 0; i--) {
 
 //15.- Teniendo un array de numeros. Determinar por cada elemnto si es multiplo de 4/3/5/2
 numberArray = [3,4,5,23,20,25,10]
-let m2 = []
-let m3 = []
-let m4 = []
-let m5 = []
-for (let i = 0; i < numberArray.length; i++) {
-    numberArray[i] % 5 === 0 ? m5.push(numberArray[i]) : null
-    numberArray[i] % 4 === 0 ? m4.push(numberArray[i]) : null
-    numberArray[i] % 3 === 0 ? m3.push(numberArray[i]) : null
-    numberArray[i] % 2 === 0 ? m2.push(numberArray[i]) : null
-}
+let m5 = numberArray.filter(item => item % 5 === 0)
+let m4 = numberArray.filter(item => item % 4 === 0) 
+let m3 = numberArray.filter(item => item % 3 === 0)
+let m2 = numberArray.filter(item => item % 2 === 0) 
 console.log("Los múltiplos de 5 son: " + m5)
 console.log("Los múltiplos de 4 son: " + m4)
 console.log("Los múltiplos de 3 son: " + m3)
@@ -158,4 +152,3 @@ while (answer3 === true){
     answer3 = window.confirm("¿Quieres eliminar alguna fruta?")
 }
 console.log("Las frutas que quedan en la lista son: " + newFruitArray)
-
