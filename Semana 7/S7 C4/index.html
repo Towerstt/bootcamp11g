@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Semana 7 Clase 3 TAREA</title>
+</head>
+<body>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <form action="" class="bg-dark text-white p-3 border rounded">
+                    <div class="form-group">
+                        <label for="">Nombre del Artículo</label>
+                        <input id="name-article" type="text" class="form-control" name="name" placeholder="Leche">
+                        <div class="row pt-2">
+                            <div class="col-3">
+                                <label for="">URL</label>
+                                <input id="url-article" type="text" class="form-control" name="url" placeholder="some URL">
+                            </div>
+                            <div class="col-3">
+                                <label for="">Descripción</label>
+                                <input id="descrption-article" type="text" class="form-control" name="description" placeholder = "Un litro de leche">
+                            </div>
+                            <div class="col-3">
+                                <label for="">Precio</label>
+                                <input id="price-article" type="text" class="form-control" name="price" placeholder="22.00">
+                            </div>
+                            <div class="col-3">
+                                <label for="">Categoría</label>
+                                <select id = "category-article" name="select" class="custom-select">
+                                    <option value="Lácteos" selected>Lácteos</option>
+                                    <option value="Carnes">Carnes</option>
+                                    <option value="frutas-verduras">Frutas y Verduras</option>
+                                  </select>
+                                  
+                            </div>
+                        </div>       
+                    </div>
+                    <div class = "row pt-2">
+                        <button id="save-article" type="button" class="btn btn-primary offset-2 col-3">Agregar Artículo</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="cards-container">
+                <div class="col-3">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                </div>
+                
+                  
+            </div>
+        </div>
+
+    </div>
+
+
+    
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
+
