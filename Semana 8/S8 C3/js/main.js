@@ -1,9 +1,9 @@
 //https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors.json
 
-const getData = () => {
+const getData = (key = '') => {
     $.ajax({
         method: "GET",
-        url: 'https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors.json',
+        url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`,
         success: response => {
             console.log(typeof (response))
             printCards(response)
@@ -42,12 +42,10 @@ const postData = object => {
     })
 }
 
-const patchData = key => {
+const patchData = (key, object) => {
     $.ajax({
         method: "PATCH",
-        data: JSON.stringify({
-            age: "55"
-        }),
+        data: JSON.stringify(object),
         url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`,
         success: response => {
             console.log(response)
@@ -79,6 +77,8 @@ const printCards = mentorCollection => {
         `
         $(".content-wrapper").append(cardHtml)
     });
+    $(".delete-mentor").click(deleteMentor)
+    $(".edit-mentor").click(editMentor)
 }
 
 getData()
@@ -98,10 +98,33 @@ const addMentor = () =>{
 
 $(".save-mentor").click(addMentor)
 
-const editMentor = key =>{
-
+const getNewData = keyToEdit => {
+    let mentorEditted = {}
+    $(".modal-body form div input").each(function(index){
+        let key = this.name
+        let value = this.value
+        mentorEditted[key] = value
+    })
+    window.confirm("¿Estás seguro de aplicar los cambios") ? patchData(keyToEdit, mentorEditted) : null
+    $(".content-wrapper").empty()
+    getData()
 }
 
-const deleteMentor = key =>{
+const editMentor = event =>{
+    key = event.target.dataset.mentorKey
+    $('#editting-modal').modal('show')
+    getData(key)
+    $.getJSON(`https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`, function(response){
+        $(".modal-body form div input[name=name]").attr("value", response.name)
+        $(".modal-body form div input[name=age]").attr("value", response.age)
+        $(".modal-body form div input[name=phone]").attr("value", response.phone)
+        $(".save-changes").click(() => getNewData(key))
+    })  
+}
 
+const deleteMentor = event =>{
+    key = event.target.dataset.mentorKey
+    window.confirm(`¿Estás seguro que quieres eliminar este registro?`) ? deleteData(key) : null
+    $(".content-wrapper").empty()
+    getData()
 }
