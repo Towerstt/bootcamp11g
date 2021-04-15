@@ -5,14 +5,13 @@ const getData = (key = '') => {
         method: "GET",
         url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`,
         success: response => {
-            console.log(typeof (response))
             printCards(response)
         },
         error: error => {
             console.log(error)
-        }
+        },
+        async: false
     })
-    
 }
 
 const deleteData = key => {
@@ -38,7 +37,8 @@ const postData = object => {
         },
         error: error => {
             console.log(error)
-        }
+        },
+        async: false
     })
 }
 
@@ -52,15 +52,35 @@ const patchData = (key, object) => {
         },
         error: error => {
             console.log(error)
-        }
+        },
+        async: false
     })
+}
+
+const deleteMentor = event =>{
+    key = event.target.dataset.mentorKey
+    window.confirm(`¿Estás seguro que quieres eliminar este registro?`) ? deleteData(key) : null
+    $(".content-wrapper").empty()
+    getData()
+}
+
+const editMentor = event =>{
+    key = event.target.dataset.mentorKey
+    $('#editting-modal').modal('show')
+    getData(key)
+    $.getJSON(`https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`, function(response){
+        $(".modal-body form div input[name=name]").attr("value", response.name)
+        $(".modal-body form div input[name=age]").attr("value", response.age)
+        $(".modal-body form div input[name=phone]").attr("value", response.phone)
+        $(".save-changes").click(() => getNewData(key))
+    })  
 }
 
 const printCards = mentorCollection => {
     mentorsKey = Object.keys(mentorCollection)
     Object.values(mentorCollection).forEach((element, index) => {
         let cardHtml = 
-        `<div class="card bg-primary text-center border rounded col-3 m-3">
+        `<div class="card text-center border-primary rounded col-3 m-3">
             <div class="card-body">
                 <div class="card-title font-weight-bold mt-3">Nombre</div>
                 <div class="card-text">${element.name}</div>
@@ -80,9 +100,8 @@ const printCards = mentorCollection => {
     $(".delete-mentor").click(deleteMentor)
     $(".edit-mentor").click(editMentor)
 }
-
+  
 getData()
-
 
 const addMentor = () =>{
     let newMentor = {}
@@ -106,25 +125,6 @@ const getNewData = keyToEdit => {
         mentorEditted[key] = value
     })
     window.confirm("¿Estás seguro de aplicar los cambios") ? patchData(keyToEdit, mentorEditted) : null
-    $(".content-wrapper").empty()
-    getData()
-}
-
-const editMentor = event =>{
-    key = event.target.dataset.mentorKey
-    $('#editting-modal').modal('show')
-    getData(key)
-    $.getJSON(`https://ajaxclass-1ca34.firebaseio.com/11g/hugo/mentors/${key}.json`, function(response){
-        $(".modal-body form div input[name=name]").attr("value", response.name)
-        $(".modal-body form div input[name=age]").attr("value", response.age)
-        $(".modal-body form div input[name=phone]").attr("value", response.phone)
-        $(".save-changes").click(() => getNewData(key))
-    })  
-}
-
-const deleteMentor = event =>{
-    key = event.target.dataset.mentorKey
-    window.confirm(`¿Estás seguro que quieres eliminar este registro?`) ? deleteData(key) : null
     $(".content-wrapper").empty()
     getData()
 }
