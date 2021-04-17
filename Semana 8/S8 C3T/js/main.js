@@ -1,40 +1,92 @@
 //"https://ajaxclass-1ca34.firebaseio.com/11g/drinktim.json"
+$('#change-user').click(() => {
+  $('#change-user-modal').modal("show")
+})
+let defaultUser;
 
+//console.log($('#users'));
 /*
-const hideReplies = () => {
-  let firstChildGroup = $(".rw li:first-child");
-  let allLi = $(".rw li");
-  allLi.hide();
-  firstChildGroup.each(function () {
-    $(this).show();
+$("body").load("views/NewUsers.html", ()=> {
+    $("h1").text("texto modificado en el callback")
+  })
+  $("body").load("views/Nav.html", ()=>{
+    console.log('Data load...')
+  })
+  $("#get-data").load('views/NewUsers.html #load-users', response=> {
+    $('#get-data').attr('data-users', $('#load-users').val())
+    console.log($('#load-users').val())
+  })
+  */
+ /* USERS*/
+const getUserData = () => {
+  let usersCollection;
+
+  $.ajax({
+      method: "GET",
+      url: "https://ajaxclass-1ca34.firebaseio.com/11g/drinktim/users.json",
+      success: (response) => {
+          usersCollection = response;
+      },
+      error: (error) => {
+          console.log(error);
+      },
+      async: false,
   });
+  return usersCollection;
 };
-*/
+
+const selectedUserData = () => {
+  let selectedId = $('#users option:selected').val();
+  let usersArr = getUserData();
+  //console.log(filteredUsersById(selectedId,usersArr))
+  return filteredUsersById(selectedId,usersArr);
+
+}
+$('#save-user-modal').click(()=>{
+  selectedUserData();
+  defaultUser = selectedUserData();
+});
+
+const filteredUsersById = (userId, data) => {
+  let selectedUser = Object.values(getUser()).find(user => user.userId == userId);
+  return selectedUser;
+}
+defaultUser = selectedUserData();
+
+
+//console.log(defaultUser)
 
 //--------------- NUEVO ---------------
+const showComments = (event) => {
+  let idToSeeMore = event.target.dataset.postIdToComment;
+  repliesWrapper.each(function () {
+    this.dataset.postId === idToSeeMore
+      ? $(this).children().show()
+      : $(this).children().hide() && $(this).children(":first").show();
+  });
+  //hide current showCommentButton
+  $(".btn-see-more").each(function () {
+    if (this.dataset.postIdToComment == idToSeeMore) {
+      $(this).hide();
+    }
+  });
+};
 
-const showComments = (event) =>{
-    let idToSeeMore = event.target.dataset.postIdToComment
-    repliesWrapper.each(function(){
-        this.dataset.postId === idToSeeMore ? $(this).children().show() : $(this).children().hide() && $(this).children(":first").show()
-    })
-}
-
-const deleteReply = key => {
-    $.ajax({
-        method: "DELETE",
-        url: `https://ajaxclass-1ca34.firebaseio.com/11g/drinktim/posts/${key}.json`,
-        success: response => {
-            console.log(response)
-        },
-        error: error => {
-            console.log(error)
-        }
-    })
-}
+const deleteReply = (key) => {
+  $.ajax({
+    method: "DELETE",
+    url: `https://ajaxclass-1ca34.firebaseio.com/11g/drinktim/posts/${key}.json`,
+    success: (response) => {
+      console.log(response);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+  });
+};
 
 //----------- FIN NUEVO ------------
-let defaultUser = { name: "Israel", id: 007 };
+
 
 let postWrapper = $("#post-wrapper");
 
@@ -47,7 +99,8 @@ const validateInfo = (data) => {
 };
 
 const setPost = () => {
-  const { name, id } = defaultUser;
+  const { username, id } = defaultUser;
+  
 
   let newPost = {};
   $('#new-post input[type="text"]').each(function () {
@@ -93,7 +146,6 @@ const getData = () => {
   return postsCollection;
 };
 
-
 const getReplies = () => {
   let repliesCollection;
 
@@ -108,22 +160,23 @@ const getReplies = () => {
     },
     async: false,
   });
+  console.log(repliesCollection)
   return repliesCollection;
 };
-
 
 const addComment = (event) => {
   let id = event.target.dataset.postId;
   let replyInput;
 
   let replyObj = {
-    author: defaultUser.name,
-    authorId: defaultUser.id,
+    author: defaultUser.username,
+    authorId: defaultUser.userId,
+    avatar: defaultUser.avatar,
     time: moment().format("LTS"),
     date: moment().format("DD/MMMM/YYYY"),
     postId: id,
   };
-
+  console.log(replyObj)
   repliesWrapper.each(function () {
     if (id == this.dataset.postId) {
       replyInput = $(`input[data-reply-id='${id}']`);
@@ -141,32 +194,31 @@ const addComment = (event) => {
 };
 
 const printReplies = (repliesCollection) => {
-
-
   repliesWrapper.children().remove();
-
+  console.log(repliesCollection)
   for (key in repliesCollection) {
-    const { author, authorId, content, date, postId, time } = repliesCollection[
+    const { author, authorId, content, date, postId, time, avatar } = repliesCollection[
       key
     ];
 
-    let reply = `
-            <li class="list-group-item">
-                <div class="reply-box">
-                  <div class="d-flex align-items-center">
-                    <img class="rounded-circle mr-2" style="height: 40px; width: 40px;" src="img/choppa.png" alt="user-img">
-                    <h3 class="font-weight-bold"><span>${author}</span></h3>
-                  </div>
-                    <p class="mt-3 font-italic" >${content}</p>
-                    <small class="text-right text-muted font-italic d-flex justify-content-end">
-                        <span class="date">${date}</span> 
-                        -
-                        <span class="time">${time}</span>   
-                    </small>
 
+
+    let reply = `
+          <li class="list-group-item">
+              <div class="reply-box">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle mr-2" style="height: 40px; width: 40px;" src=${avatar} alt="user-img">
+                  <h3 class="font-weight-bold"><span>${author}</span></h3>
                 </div>
-            </li>
-    `;
+                  <p class="mt-3 font-italic" >${content}</p>
+                  <small class="text-right text-muted font-italic d-flex justify-content-end">
+                      <span class="date">${date}</span> 
+                      -
+                      <span class="time">${time}</span>   
+                  </small>
+              </div>
+          </li>
+  `;
 
     repliesWrapper.each(function () {
       if (this.dataset.postId == postId) {
@@ -182,40 +234,40 @@ const printPost = (data) => {
     const { author, authorId, content, date, idPost, title, url } = data[key];
 
     let post = `
-    <div class="col-12">
-        <div id=${idPost} class="card shadow-sm rounded mb-3">
-           <div class="row no-gutters p-4">
-             <div class="col-md-4">
-               <img class="w-100" style="height: 200px;" src=${url} alt="img">
+  <div class="col-12 mt-2">
+      <div id=${idPost} class="card shadow-sm rounded mb-3">
+         <div class="row no-gutters p-4">
+           <div class="col-md-4">
+             <img class="w-100" style="height: 200px;" src=${url} alt="img">
+           </div>
+           <div class="col-md-8 p-3">
+             <div "class="card-body ">
+               <h3 class="card-title font-weight-bold">${title}</h3>
+               <p class="text-muted font-italic"> ${author}</p>
+               <p class="card-text">${content}</p>
+               <p class="card-text d-flex justify-content-end"><small class="text-muted">Created <span class="text-dark">${date}</span></small></p>
              </div>
-             <div class="col-md-8 p-3">
-               <div "class="card-body ">
-                 <h3 class="card-title font-weight-bold">${title}</h3>
-                 <p class="text-muted font-italic"> ${author}</p>
-                 <p class="card-text">${content}</p>
-                 <p class="card-text d-flex justify-content-end"><small class="text-muted">Created <span class="text-dark">${date}</span></small></p>
-               </div>
-             </div>
            </div>
-           <div data-post-id=${idPost} class="replies-wrapper">
-           <div data-post-id=${idPost}  class="rw">
-   
-          
-           </div>
-           <div class="reply-form p-3 mt-2">
-               <form>
-                   <div class="form-group d-flex">
-                       <input data-reply-id=${idPost} name="reply" type="text" class="form-control" placeholder="Write a comment">
-                       <button data-post-id=${idPost} type="button" class="btn btn-success btn-comment">Comment</button>
-                   </div>
-               </form>
-           </div>
-       </div>
-       </div>
-   </div>
-           `;
+         </div>
+         <div data-post-id=${idPost} class="replies-wrapper">
+         <div data-post-id=${idPost}  class="rw">
+ 
+        
+         </div>
+         <div class="reply-form p-3 mt-2">
+             <form>
+                 <div class="form-group d-flex">
+                     <input data-reply-id=${idPost} name="reply" type="text" class="form-control" placeholder="Write a comment">
+                     <button data-post-id=${idPost} type="button" class="btn btn-success btn-comment">Comment</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+     </div>
+ </div>
+         `;
 
-    postWrapper.append(post);
+    postWrapper.prepend(post);
   }
   $(".btn-comment").click(addComment);
 };
@@ -255,13 +307,14 @@ const savePost = (newPost) => {
 printReplies(getReplies());
 
 //----------- NUEVO -----------
-repliesWrapper.children().hide()
-repliesWrapper.each(function(){
-    let btnShow = `<button data-post-id-to-comment = ${this.dataset.postId} class="btn btn-primary btn-see-more">See more comments</button>`
-    $(this).children(":first").show()
-    $(this).children().length !== 1 ? $(this).children(":first").append(btnShow) : null
-})
-$(".btn-see-more").click(showComments)
+repliesWrapper.children().hide();
+repliesWrapper.each(function () {
+  let btnShow = `<button data-post-id-to-comment = ${this.dataset.postId} class="btn text-muted btn-see-more">See more comments</button>`;
+  $(this).children(":first").show();
+  $(this).children().length !== 1
+    ? $(this).children(":first").append(btnShow)
+    : null;
+});
+$(".btn-see-more").click(showComments);
 
 //--------- FIN NUEVO -------
-

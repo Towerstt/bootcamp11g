@@ -1,0 +1,51 @@
+<div id="change-user-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Available Users</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Users</label
+              >
+            </div>
+            <select class="custom-select" id="users"></select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="save-user-modal">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <nav class="navbar navbar-light bg-light">
+    <p class="navbar-brand">Social Network</p>
+  
+    <div>
+      <a href="../index.html" class="font-weight-bold">Post</a>
+      <a href="NewUsers.html" class="font-weight-bold mx-5">Add users</a>
+      <a href="NewPost.html" class="font-weight-bold">Add new post</a>
+    </div>
+    <div class="d-flex align-items-center">
+      <button id="change-user" class="btn">Change User</button>
+      <img
+        id="img-avatar"
+        class="rounded-circle"
+        style="height: 50px; width: 50px"
+        alt="user-img"
+      />
+    </div>
+  </nav>

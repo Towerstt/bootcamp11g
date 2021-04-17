@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Social Network</title>
+</head>
+<body>
+  <div id="change-user-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Available Users</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Users</label>
+            </div>
+            <select class="custom-select" id="users">
+            </select>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="save-user-modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-light bg-light">
+    <p class="navbar-brand">Social Network</p>
+
+    <div>
+      <a href="../index.html" class="font-weight-bold">Post</a>
+      <a href="NewUsers.html" class="font-weight-bold mx-5" >Add users</a>
+      <a href="NewPost.html" class="font-weight-bold" >Add new post</a>
+    </div>
+    <div class="d-flex align-items-center">
+      <button  id="change-user" class="btn">Change User</button>
+      <img id="img-avatar" class="rounded-circle" style="height: 50px; width: 50px;"  alt="user-img">
+    </div>
+  </nav>
+
+<div class="container container-fluid">
+  <div class="row mt-3 mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body shadow-sm">
+          <h1 class="card-title font-weight-bold">Create users</h1>
+          <form id="new-user">
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control-xl w-100" name="username">
+              </div>
+                <div class="form-group">
+                  <label>Avatar image</label>
+                  <input type="text" class="form-control-xl w-100" name="avatar">
+                </div>
+              <button  id="save-user" type="button" class="btn btn-success w-100">Create User</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div  id="data-load">
+  
+</div>
+
+</div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/createUsers.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
