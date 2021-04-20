@@ -34,7 +34,7 @@ const savePet = (newPet) => {
 const deletePet = (key) => {
     $.ajax({
         method: "DELETE",
-        url:  `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/pets/${key}.json`,
+        url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/pets/${key}.json`,
         success: (response) => {
             console.log(response);
         },
@@ -74,10 +74,24 @@ const saveOwner = (newOwner) => {
     });
 };
 
+const changeOwnerData = (values,key) => {
+    $.ajax({
+        method: "PUT",
+        url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/pets/${key}.json`,
+        data: JSON.stringify(values),
+        success: (response) => {
+            console.log(response);
+        },
+        error: (error) => {
+            console.log(error);
+        },
+    });
+};
+
 const deleteOwner = (key) => {
     $.ajax({
         method: "DELETE",
-        url:  `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/owners/${key}.json`,
+        url: `https://ajaxclass-1ca34.firebaseio.com/11g/hugo/owners/${key}.json`,
         success: (response) => {
             console.log(response);
         },
@@ -87,6 +101,11 @@ const deleteOwner = (key) => {
     });
 };
 // ----------------- INFO FROM INPUTS ---------------
+const filteredOwnerByName = (ownerName) => {
+    let selectedOwner = Object.values(getOwnersCollection()).find(owner => owner.owner == ownerName);
+    return selectedOwner;
+}
+
 const setPetData = () => {
     let inputGroup = $('#new-pet .form-control')
     let petId = Date.now();
@@ -98,23 +117,26 @@ const setPetData = () => {
         ...newPet,
         petId
     };
-    try{filteredOwnerByName(newPet.owner)}
-    catch(e) {alert("No se ha registrado a ese dueño")}
+    console.log(newPet.owner)
+    try {
+        filteredOwnerByName(newPet.owner).ownerId
+    } catch (e) {
+        alert("No se ha registrado a ese dueño")
+    }
     
     ownerId = filteredOwnerByName(newPet.owner).ownerId
     newPet = {
         ...newPet,
         ownerId
     };
-    console.log(newPet);
     savePet(newPet);
+    printPetCard(getPetCollection())
 }
 
 $('#save-pet').click(setPetData)
 
 const setOwnerData = () => {
     let inputGroup = $('#new-owner .form-control')
-    console.log(inputGroup)
     let ownerId = Date.now();
     let newOwner = {};
     $.each(inputGroup, (idx, currentInput) => {
@@ -124,83 +146,145 @@ const setOwnerData = () => {
         ...newOwner,
         ownerId
     };
-    console.log(newOwner);
     saveOwner(newOwner);
+    printOwnersTable(getOwnersCollection())
 }
 $('#save-owner').click(setOwnerData)
 
-
-
-const filteredPetById = (ownerId) =>{
-    let selectedPet = Object.values(getPetCollection()).reduce((accum, current) =>{
+const filteredPetById = (ownerId) => {
+    let selectedPet = Object.values(getPetCollection()).reduce((accum, current) => {
         current.ownerId == ownerId ? accum += 1 : null
         return accum
-    },0)
-    console.log(selectedPet)
+    }, 0)
     return selectedPet
 }
-
-
-
 
 // -------------- PRINT CARDS ------------------
 let petWrapper = $('#pet-wrapper-transitive')
 
 const printPetCard = (petCollec) => {
-    let ownCollec = getOwnersCollection()
-    console.log(ownCollec)
-    
+    petWrapper.empty()
     for (key in petCollec) {
-        a = Object.values(petCollec[key])
-        console.log(a)
-     let petCard = 
-    `<div class="col-3 m-3">
-        <div class="card">
-            <img src=${a[5]}
+        const {
+            description,
+            owner,
+            ownerId,
+            pet,
+            petId,
+            url
+        } = petCollec[key]
+        let petCard =
+            `<div class="col-3 m-3">
+        <div class="card" data-key=${key}>
+            <img src=${url}
                 class="card-img-top" alt="...">
             <div class="card-body">
-                <h2 class="card-title" data-petId = ${a[4]}>${a[3]}</h2>
-                <h5 class="card-title text-muted" data-owner-id=${a[2]}>${a[1]}</h5>
-                <p class="card-text">${a[0]}</p>
-                <button href="#" class="btn btn-primary adopt" data-owner-id=${a[2]}>ADOPT</button>
+                <h2 class="card-title" data-petId = ${petId}>${pet}</h2>
+                <h5 class="card-title text-muted" data-owner-id=${ownerId}>${owner}</h5>
+                <p class="card-text">${description}</p>
+                <button class="btn btn-primary adopt" data-key=${key} data-pet-id =${petId} data-owner-id=${ownerId}>ADOPT</button>
             </div>
         </div>
     </div>`
-    petWrapper.prepend(petCard)
+        petWrapper.prepend(petCard)
     }
 }
 
 printPetCard(getPetCollection())
 
 let ownersWrapper = $('#owners-wrapper')
-const printOwnersTable = data =>{
+const printOwnersTable = data => {
+    ownersWrapper.empty()
     let counter = 1
     for (key in data) {
-        a = Object.values(data[key])
-    let ownerRow = 
-    `<tr>
-        <th scope="row">${counter}</th>
-        <td data-owner-id = ${a[1]}>${a[0]}</td>
-        <td>${filteredPetById(a[1])}</td>
-    </tr>`
-    ownersWrapper.append(ownerRow)
-    counter ++
+        const {owner, ownerId} = data[key]
+        let ownerRow =
+        `<tr>
+            <th scope="row">${counter}</th>
+            <td data-owner-id = ${ownerId}>${owner}</td>
+            <td>${filteredPetById(ownerId)}</td>
+        </tr>`
+        ownersWrapper.append(ownerRow)
+        counter++
     }
 }
 
 printOwnersTable(getOwnersCollection())
 
-
-const filteredOwnerByName = (ownerName) => {
-    let selectedOwner = Object.values(getOwnersCollection()).find(owner => owner.owner == ownerName);
-    return selectedOwner;
-}
-
-const disableButton = () =>{
+const disableButton = () => {
     let adoptBtns = $('.adopt')
-    $.each(adoptBtns, (idx, currentBtn) =>{
-        currentBtn.dataset.ownerId === '1618906589891' ? null : currentBtn.disabled = true
+    $.each(adoptBtns, (idx, currentBtn) => {
+        currentBtn.dataset.ownerId === '1618950313527' ? null : currentBtn.disabled = true
     })
 }
 disableButton()
 
+let adoptBtn = $('.adopt').not(':disabled')
+adoptBtn.click(event => {
+    let petToAdoptKey = event.target.dataset.key
+    let allPets = getPetCollection()
+    let petToAdopt = {}
+    for (key in allPets) {
+        key === petToAdoptKey ? petToAdopt = {
+            ...petToAdopt,
+            [key]: allPets[key]
+        } : null
+    }
+    a = Object.values(petToAdopt)
+    $('#exampleModal').modal('show')
+    $('#exampleModalLabel').text(`¿Quieres adoptar a ${a[0].pet}`)
+    setNewOwnerData(petToAdopt)
+})
+
+const setNewOwnerData = (object) => {
+    let inputGroup2 = $('.modal-form-input')
+    inputGroup2.attr('value', Object.values(object)[0].owner)
+    let newOwner = {}
+    $('#save-new-owner').click(() => {
+        z = inputGroup2.val()
+        console.log(z)
+        let y
+        try {
+            filteredOwnerByName(z).ownerId
+            y = filteredOwnerByName(z)
+        } catch (e) {
+            alert("No se ha registrado a ese dueño")
+        }
+        newOwner = object
+        for(key in newOwner){
+            newOwner[key].owner = y.owner
+            newOwner[key].ownerId = y.ownerId
+        }
+        petKey = Object.keys(newOwner)[0]
+        petValues = Object.values(newOwner)[0]
+        changeOwnerData(petValues,petKey)
+    })
+}
+
+//---------Filtrar por Dueño----------
+let option = $('select')
+console.log(option)
+$.each(getOwnersCollection(), (idx, el) =>{
+    let newOption = `<option value="${el.ownerId}">${el.owner}</option>`
+    option.append(newOption)
+})
+$('select').change(()=>{
+    let filteredOwnerId = $('select option:selected').attr('value')
+    filteredOwnerId === 'all' ? location.reload() : null
+    console.log(filteredOwnerId)
+    let allPetsToFilter = getPetCollection()
+    let petsFilteredByOwner = {}
+    for (key in allPetsToFilter){
+        const {
+            description,
+            owner,
+            ownerId,
+            pet,
+            petId,
+            url
+            } = allPetsToFilter[key]
+    filteredOwnerId == ownerId ? petsFilteredByOwner = {...petsFilteredByOwner, [key]:allPetsToFilter[key]} : null
+    }
+    printPetCard(petsFilteredByOwner)
+    disableButton()
+})
