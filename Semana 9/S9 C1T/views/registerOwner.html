@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light d-flex justify-content-between">
+        <p class="navbar-brand">Adopt a Pet</p>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="registerPet.html">Register a Pet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <div>
+                <img class="rounded-circle" style="height: 50px; width: 50px;"
+                    src="https://picsum.photos/id/237/200/300">
+            </div>
+    </nav>
+    <div class="container container-fluid">
+        <div class="row mt-3 mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body shadow-sm">
+                        <h1 class="card-title font-weight-bold">Register an Owner</h1>
+                        <form id="new-pet">
+                            <div class="form-group">
+                                <label for="">Owner name</label>
+                                <input type="text" class="form-control" name="pet-name">
+                            </div>
+                            <button id="save-post" type="button" class="btn btn-primary">Submit Owner</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="../js/owner.js"></script>
+        <script src="../js/main.js"></script>
+</body>
+
+</html>
