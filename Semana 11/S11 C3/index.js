@@ -1,3 +1,4 @@
+const { log } = require('console')
 const express = require('express')
 const server = express()
 const fs = require('fs')
@@ -9,6 +10,15 @@ server.get('/koders/:id', (request, response) =>{
     const content = fs.readFileSync('koders.json', 'utf8')
     const contentJson = JSON.parse(content)
     const koderGot = contentJson.koders.filter(koder => koder.id === id)
+    console.log(koderGot)
+    if (!koderGot){
+        response.status(404)
+        response.json({
+            success: false,
+            message: 'Koder not found'
+        })
+        return
+    } 
     response.json(koderGot)
 })
 
