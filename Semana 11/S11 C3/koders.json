@@ -6,6 +6,11 @@
       "gender": "m"
     },
     {
+      "id": 2,
+      "name": "Walter",
+      "gender": "m"
+    },
+    {
       "id": 3,
       "name": "Mariana",
       "gender": "f"
@@ -21,19 +26,36 @@
       "gender": "f"
     },
     {
-      "id": 6,
-      "name": "Hugo",
-      "gender": "m"
-    },
-    {
       "id": 7,
-      "name": "Alejandra",
+      "name": "Taquito",
       "gender": "f"
     },
     {
       "id": 8,
-      "name": "María",
-      "gender": "f"
+      "name": "Javier",
+      "gender": "m"
+    }
+  ],
+  "mentors": [
+    {
+      "id": 1,
+      "name": "Oso",
+      "module": "hello"
+    },
+    {
+      "id": 3,
+      "name": "Israel",
+      "module": "maquetado"
+    },
+    {
+      "id": 4,
+      "name": "Charles",
+      "module": "Back"
+    },
+    {
+      "id": 2,
+      "name": "Melisa",
+      "module": "hello koders"
     }
   ]
 }
