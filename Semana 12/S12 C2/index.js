@@ -29,6 +29,12 @@ server.get('/koders', async (request, response) => {
 
 server.post('/koders', (request, response) => {
     const koderToPost = request.body
+    if(!koderToPost.name || !koderToPost.lastName || !koderToPost.age || !koderToPost.gender){
+        return response.status(404).json({
+            msj: 'No all fields setted (Name, Last Name, Age, Gender)',
+            success : false
+        })
+    }
     Koder.create(koderToPost)
     response.json({
         msj: 'Koder posted successfully',
