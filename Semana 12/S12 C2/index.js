@@ -27,22 +27,31 @@ server.get('/koders', async (request, response) => {
     })
 })
 
-server.post('/koders', (request, response) => {
-    const koderToPost = request.body
-    if(!koderToPost.name || !koderToPost.lastName || !koderToPost.age || !koderToPost.gender){
-        return response.status(404).json({
-            msj: 'No all fields setted (Name, Last Name, Age, Gender)',
+server.post('/koders', async (request, response) => {
+    try{
+        const koderToPost = request.body
+        // if(!koderToPost.name || !koderToPost.lastName || !koderToPost.age || !koderToPost.gender){
+        //     return response.status(404).json({
+        //         msj: 'No all fields setted (Name, Last Name, Age, Gender)',
+        //         success : false
+        //     })
+        // }
+
+        await Koder.create(koderToPost)
+        response.json({
+            msj: 'Koder posted successfully',
+            success: true,
+            data: {
+                koderPosted: koderToPost
+            }
+        })}
+    catch (error){
+        response.status(404)
+        response.json({
+            msj : error.message,
             success : false
         })
     }
-    Koder.create(koderToPost)
-    response.json({
-        msj: 'Koder posted successfully',
-        success: true,
-        data: {
-            koderPosted: koderToPost
-        }
-    })
 })
 
 server.delete('/koders', async (request, response) => {
