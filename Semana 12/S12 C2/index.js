@@ -1,6 +1,3 @@
-const {
-    request
-} = require('express')
 const express = require('express')
 const server = express()
 server.use(express.json())

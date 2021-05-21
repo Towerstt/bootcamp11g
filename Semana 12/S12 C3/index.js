@@ -1,12 +1,17 @@
 const express = require('express')
 const server = express()
+const router = require('./router')
 
 server.use((request, response, next) => {
-    
+    console.log('Middleware a nivel de aplicación')
+    next()
 })
 
-
-server.get('/', (request, response) =>{
+server.use('/', router)
+server.get('/', (request, response, next) =>{
+    console.log('Middleware a nivel de ruta')
+    next()
+}, (request, response) =>{
     response.json({
         msj : 'API Middleware'
     })
