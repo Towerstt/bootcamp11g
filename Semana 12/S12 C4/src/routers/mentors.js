@@ -1,17 +1,17 @@
 const express = require('express')
-const koders = require('../usecases/koders')
+const mentors = require('../usecases/mentors')
 const router = express.Router()
 router.use(express.json())
 
 router.get('/', async (request, response) =>{
     try{
-        const allKoders = await koders.getAll()
+        const allMentors = await mentors.getAll()
 
         response.json({
             success : true,
-            msj : 'All koders got',
+            msj : 'All mentors got',
             data : {
-                koders : allKoders
+                mentors : allMentors
             }
         })
     }
@@ -19,7 +19,7 @@ router.get('/', async (request, response) =>{
         response.status(400)
         response.json({
             success : false,
-            msj : 'Cannot got koders',
+            msj : 'Cannot got mentors',
             error : error.message
         })
     }
@@ -27,15 +27,14 @@ router.get('/', async (request, response) =>{
 
 router.post('/', async (request, response) => {
     try{
-        const koderToPost = request.body
-        console.log(request.body)
+        const mentorToPost = request.body
 
-        const newKoder = await koders.postNewKoder(koderToPost)
+        const newMentor = await mentors.create(mentorToPost)
         response.json({
-            msj: 'Koder posted successfully',
+            msj: 'Mentor posted successfully',
             success: true,
             data: {
-                koderPosted: newKoder
+                MentorPosted: newMentor
             }
         })}
     catch (error){
@@ -50,18 +49,20 @@ router.post('/', async (request, response) => {
 
 router.delete('/:id', async (request, response) => {
     try{
-        const koderID = request.url.replace('/','')
-        const koderDeleted = await koders.deleteByID(koderID)
+        const mentorID = request.url.replace('/','')
+        const mentorDeleted = await mentors.deleteByID(mentorID)
         response.json({
             success: true,
-            msj: 'Koder deleted successfully',
-            data : koderDeleted
+            msj: 'Mentor deleted successfully',
+            data : {
+                data : mentorDeleted
+            }
         })
     }
     catch{
         response.json({
             success: false,
-            msj: 'Koder does not exist',
+            msj: 'Mentor does not exist',
             error : error.message
         })
     }
@@ -69,18 +70,20 @@ router.delete('/:id', async (request, response) => {
 
 router.patch('/:id', async (request, response) =>{
     try {
-        const id = request.params
+        const id = request.params.id
         const newData = request.body
-        const koderUpdated = await koders.updateByID(id, newData)
+        const mentorUpdated = await mentors.updateByID(id, newData)
         response.json({
             success: true,
-            msj: 'Koder updated successfully',
-            data : koderUpdated
+            msj: 'Mentor updated successfully',
+            data : {
+                mentor: mentorUpdated
+            }
         })
     } catch (error) {
         response.json({
             success: false,
-            msj: 'Koder could not be updated',
+            msj: 'Mentor could not be updated',
             error : error.message
         })
     }    

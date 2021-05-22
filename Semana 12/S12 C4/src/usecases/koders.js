@@ -11,8 +11,13 @@ function postNewKoder (koderToCreate) {
 function deleteByID (koderID){
     return Koders.findByIdAndRemove(koderID)
 }
+
+function updateByID(koderID, newData){
+    return Koders.findByIdAndUpdate(koderID, newData)
+}
 module.exports = {
     getAll,
     postNewKoder,
-    deleteByID
+    deleteByID,
+    updateByID
 }

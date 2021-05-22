@@ -2,9 +2,11 @@
 
 const express = require('express')
 const kodersRouter = require('./routers/koders')
+const mentorsRouter = require('./routers/mentors')
 const app = express()
 
 app.use('/koders', kodersRouter)
+app.use('/mentors', mentorsRouter)
 
 
 
