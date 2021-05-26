@@ -62,4 +62,26 @@ router.delete('/:id', async (request, response) =>{
 })
 
 
+router.post('/login', async (request, response) =>{
+    try {
+        const {email, password} = request.body
+        const token = await users.login(email, password)
+
+        response.json({
+            success : true,
+            msg : 'Logged in',
+            data : {
+                token
+            }
+        })
+    } catch (error) {
+        response.status(400)
+        response.json({
+            success : false,
+            msg : 'Could not log in',
+            error : error.message
+        })
+    }
+})
+
 module.exports = router

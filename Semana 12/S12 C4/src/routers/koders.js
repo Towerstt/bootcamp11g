@@ -1,9 +1,11 @@
 const express = require('express')
 const koders = require('../usecases/koders')
+const authMiddlewares = require('../middlewares/auth')
 const router = express.Router()
 router.use(express.json())
 
-router.get('/', async (request, response) =>{
+
+router.get('/', authMiddlewares.auth, async (request, response) =>{
     try{
         const allKoders = await koders.getAll()
 
@@ -25,7 +27,7 @@ router.get('/', async (request, response) =>{
     }
 })
 
-router.post('/', async (request, response) => {
+router.post('/', authMiddlewares.authRoles(['admin']), async (request, response) => {
     try{
         const koderToPost = request.body
         console.log(request.body)
