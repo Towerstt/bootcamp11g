@@ -1,9 +1,8 @@
+require('dotenv').config() //Debe FORZOSAMENTE ser la primer línea del index
+//Acceder a las variables de entorno - Del sistema y del archivo .env --> process.env
+
 const server = require('./src/server')
 const dbConnect = require('./src/lib/db')
-
-
-
-
 
 dbConnect()
     .then(() =>{
