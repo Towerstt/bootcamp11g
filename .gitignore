@@ -1,3 +1,4 @@
 node_modules
 datosMongo.txt
 .env
+.env.local
