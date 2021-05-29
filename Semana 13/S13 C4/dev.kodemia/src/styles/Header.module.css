@@ -1,0 +1,36 @@
+.Header {
+    width: 100%;
+    font-size: .5rem;
+    align-items: center;
+    padding:  1rem 0rem;
+}
+
+.Header img{
+    margin-right : .5rem;
+}
+
+.Header input{
+    border : 1px solid gray;
+    border-radius: .2rem;
+    width : 25rem;
+    height: 45px;
+    background-color: rgba(222, 245, 253, 0.3);
+    font-size: 1rem;
+}
+
+.left{
+    width:70%
+}
+
+.right{
+    width : 25%;
+    height: 45px;
+}
+
+.right a img{
+    width: 1.5rem;
+}
+.right img{
+    width: 2.2rem;
+    border-radius: 50%;
+}
