@@ -1,0 +1,42 @@
+.userPic{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+.userName{
+    font-size: .8rem;
+    font-weight: 500;
+    color: gray
+}
+
+.date{
+    font-size: .8rem;
+    color: gray
+}
+
+.title{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.icons{
+    width: .9rem;
+    height: .9rem;
+    margin-right: .5rem;
+    margin-left: .5rem;
+}
+
+.timeText{
+    font-size: .8rem;
+
+}
+
+.save{
+    background-color: lightgray;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}

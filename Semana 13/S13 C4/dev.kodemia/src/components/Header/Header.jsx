@@ -1,11 +1,14 @@
 import React from 'react'
+
 import Styles from '../../styles/Header.module.css'
 import HeaderLogo from './HeaderLogo'
 import HeaderInput from './HeaderInput'
-import HeaderChat from './HeaderChat'
-import HeaderAlert from './HeaderAlert'
-import HeaderUser from './HeaderUser'
-import HeaderButton from './HeaderButton'
+// import HeaderChat from './HeaderChat'
+// import HeaderAlert from './HeaderAlert'
+// import HeaderUser from './HeaderUser'
+// import HeaderButton from './HeaderButton'
+import HeaderBtn from './HeaderBtn'
+
 class Header extends React.Component {
     render(){
         return (
@@ -14,12 +17,13 @@ class Header extends React.Component {
                     <HeaderLogo className={Styles.StylesLogo} />
                     <HeaderInput />
                 </div>
-                <div className={`${Styles.right} d-flex justify-content-between align-items-center`}>
-                    <HeaderButton />
+                <div className={`${Styles.right} d-flex justify-content-evenly align-items-center`}>
+                    {/* <HeaderButton />
                     <HeaderChat />
                     <HeaderAlert />
-                    <HeaderUser />
-                    
+                    <HeaderUser /> */}
+                    <HeaderBtn text='Login' type='anchor' className={Styles.anchor}/>
+                    <HeaderBtn text='Create Account' className={`btn btn-primary`}/>
                     
                 </div>
             </nav>
