@@ -5,6 +5,7 @@ import Header from "../src/components/Header/Header";
 import LeftAside from "../src/components/Left-aside/Left-aside";
 import GeneralContainer from "./components/Center/Center";
 import RightAside from "./components/Right-aside/Right-aside";
+import AppLoading from "./components/AppLoading";
 
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
             <RightAside />
           </div>
         </div>
+        <AppLoading />
       </React.Fragment>
     );
   }

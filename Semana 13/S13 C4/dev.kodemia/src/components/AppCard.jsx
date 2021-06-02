@@ -1,4 +1,5 @@
 import React from 'react'
+import Styles from '../styles/AppCard.module.css'
 
 class AppCard extends React.Component{
     constructor(props){
@@ -7,7 +8,7 @@ class AppCard extends React.Component{
     }
     render(){
         return(
-            <div className='card mb-3'>
+            <div className={`${Styles.cardBody} card mb-3`}>
 
                     {this.props.children}
             </div>

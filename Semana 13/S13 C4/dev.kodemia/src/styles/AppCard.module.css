@@ -1,0 +1,4 @@
+.cardBody *:not(button){
+    background-color: var(--body-bg);
+    color : var(--color)
+}

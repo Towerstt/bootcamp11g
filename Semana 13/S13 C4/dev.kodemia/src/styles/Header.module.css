@@ -3,6 +3,7 @@
     font-size: .5rem;
     align-items: center;
     padding:  1rem 0rem;
+    background-color: var(--header-bg);
 }
 
 .Header img{
@@ -35,6 +36,9 @@
     border-radius: 50%;
 }
 
+.Header button{
+    background-color: var(--bs-primary);
+}
 .anchor{
     font-size: 1rem;
 }

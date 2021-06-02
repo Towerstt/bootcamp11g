@@ -1,3 +1,11 @@
+:root {
+  --bs-primary: purple;
+  --header-bg : white;
+  --body-bg : #eef0f1;
+  --color:blue;
+  --loading-bg : white;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,4 +13,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-bg);
+}
+
+body[theme='Dark']{
+  --header-bg : darkgray;
+  --bs-primary : peru;
+  --body-bg : #6c757d;
+  --color: white;
+  --loading-bg: black;
+}
+
+body *{
+  color: var(--color);
 }
