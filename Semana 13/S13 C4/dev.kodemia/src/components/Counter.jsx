@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react' //HOOKS
 
-const multiply = 2
+const number = 2
 
 function Counter () {
     const [count, setCounter] = useState(1)
@@ -19,11 +19,11 @@ function Counter () {
 
     const modifyCounter = (action) => {
         if(action === 'incrementar'){
-            const newState = count * multiply
+            const newState = count * number
             setCounter(newState)
             return
         }
-        const newState = count / multiply
+        const newState = count / number
         setCounter(newState)
         return
     }
@@ -32,8 +32,8 @@ function Counter () {
             <div className="row">
                 <div className="col-12">
                     <p>{count}</p>
-                    <button onClick={() => modifyCounter('incrementar')} className='btn btn-success'>*{multiply}</button>
-                    <button onClick={() => modifyCounter('decrementar')} className='btn btn-danger'>/{multiply}</button>
+                    <button onClick={() => modifyCounter('incrementar')} className='btn btn-success'> * {number}</button>
+                    <button onClick={() => modifyCounter('decrementar')} className='btn btn-danger'> / {number}</button>
                 </div>
             </div>
         </div>
