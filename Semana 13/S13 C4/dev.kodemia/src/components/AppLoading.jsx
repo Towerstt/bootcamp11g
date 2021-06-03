@@ -22,7 +22,7 @@ class AppLoading extends React.Component{
     componentDidMount(){
         setTimeout(() =>{
             this.setState({active : false})
-        },10000)
+        },100)
     }
 }
 

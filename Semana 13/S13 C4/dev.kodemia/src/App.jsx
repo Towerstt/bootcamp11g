@@ -6,6 +6,7 @@ import LeftAside from "../src/components/Left-aside/Left-aside";
 import GeneralContainer from "./components/Center/Center";
 import RightAside from "./components/Right-aside/Right-aside";
 import AppLoading from "./components/AppLoading";
+import Counter from "./components/Counter";
 
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <div>
+          <Counter />
           <Header />
         </div>
         <div className="total-container container-fluid">
