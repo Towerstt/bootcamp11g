@@ -64,7 +64,7 @@ import "../styles/AppTheme.css";
 //Refactorizar el componente como clase al componente como función
 
 function AppThemeToggle2(props) {
-  const [theme, setCounter] = useState("Light");
+  const [theme, setTheme] = useState("Light");
 
   useEffect(() => {
     document.body.setAttribute("theme", theme);
@@ -77,13 +77,12 @@ function AppThemeToggle2(props) {
 
   const toggle2 = (action) => {
     let themeMode = theme === "Light" ? "Dark" : "Light";
-    setCounter(themeMode);
+    setTheme(themeMode);
   };
   let styleToApply;
   theme === "Light"
     ? (styleToApply = "appThemeToggle")
     : (styleToApply = "appThemeDark");
-  console.log(styleToApply);
   return (
     <div className={styleToApply} onClick={toggle2}>
       {theme}

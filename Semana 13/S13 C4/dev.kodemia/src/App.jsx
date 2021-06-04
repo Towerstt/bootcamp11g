@@ -1,31 +1,28 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
+import Home from './screens/Home/index'
 import "./styles/index.css";
-
-import Header from "../src/components/Header/Header";
-import LeftAside from "../src/components/Left-aside/Left-aside";
-import GeneralContainer from "./components/Center/Center";
-import RightAside from "./components/Right-aside/Right-aside";
-import AppLoading from "./components/AppLoading";
-import Counter from "./components/Counter";
-
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <div>
-          <Counter />
-          <Header />
-        </div>
-        <div className="total-container container-fluid">
-          <div className="row">
-            <LeftAside />
-            <GeneralContainer />
-            <RightAside />
-          </div>
-        </div>
-        <AppLoading />
-      </React.Fragment>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/test'>
+            <h1>Prueba funcionando!!!</h1>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
     );
   }
 }

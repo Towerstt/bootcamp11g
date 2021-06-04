@@ -31,9 +31,9 @@ import Styles from "../styles/AppLoading.module.css";
 //Refactorizando el componente como clase a componente como función
 
 function AppLoading2(props) {
-  const [active, setCounter] = useState(true);
+  const [active, setActive] = useState(true);
   setTimeout(() => {
-    setCounter(false);
+    setActive(false);
   }, 5000);
 
   const isActive = active ? Styles.active : "";
