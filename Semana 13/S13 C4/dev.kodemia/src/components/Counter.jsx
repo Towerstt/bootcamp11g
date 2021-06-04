@@ -11,7 +11,7 @@ function Counter () {
         
     useEffect(() =>{            //Con 2 argumentos (callback y estado) - es como el DidUpdate el estado
         console.log('2')
-    },[count])
+    },[count]) 
     
     useEffect(() =>{            //Con sólo el argumento callback - Es como DidUpdate de TODO (+/- = render)
         console.log('3')

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Styles from '../styles/AppLoading.module.css'
 
 class AppLoading extends React.Component{
@@ -16,7 +16,7 @@ class AppLoading extends React.Component{
                     <span className='visually-hidden'>Loading...</span>
                 </div>
             </div>
-        )
+        ) 
     }
 
     componentDidMount(){
@@ -26,4 +26,25 @@ class AppLoading extends React.Component{
     }
 }
 
-export default AppLoading
+//Refactorizando el componente como clase a componente como función
+
+function AppLoading2 (props){
+    const [active, setCounter] = useState(true)
+    setTimeout(() => {
+        setCounter(false)
+    }, 5000)
+
+    const isActive =  active ? Styles.active : ''
+        return(
+            <div className={`${Styles.loading} ${isActive} align-items-center justify-content-center`}>
+                <div className='spinner-border' role='status'>
+                    <span className='visually-hidden'>Loading...</span>
+                </div>
+            </div>
+        ) 
+    
+}
+
+
+
+export default AppLoading2
