@@ -82,8 +82,7 @@ function AppThemeToggle2 (props){
 
 
     const toggle2 = (action) =>{
-        console.log(action)
-        console.log(theme)
+
         let themeMode = theme === 'Light' ? 'Dark' : 'Light'
         setCounter(themeMode)
     }
