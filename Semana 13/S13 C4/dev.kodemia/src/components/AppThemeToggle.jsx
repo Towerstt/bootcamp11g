@@ -59,7 +59,7 @@ import "../styles/AppTheme.css";
 //     const now = new Date()
 //     console.log('antes de que me quite del DOM!', now.getTime())
 // }
-// }
+// } 
 
 //Refactorizar el componente como clase al componente como función
 
