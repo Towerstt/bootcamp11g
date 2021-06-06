@@ -5,97 +5,40 @@ export default function ListChallenge2() {
   const [state, setNewState] = useState({
     clicked: "",
     hovered: "",
-    clear: "clear",
   });
-  const handleClick = (event) => {
-    let liList = document.getElementsByTagName("a");
-    console.log(event.target);
-    console.log(liList)
-    for (let i = 0; i < liList.length - 1; i++) {
-      console.log(liList[i]);
-      if (event.target === liList[i]) {
-        console.log(event.target.href.charAt(event.target.href.length - 1));
-        setNewState((prevState) => ({
-          clicked: "isClicked",
-          clear: "",
-          hovered: "",
-        }));
-        return;
-      } else {
-        console.log(liList[i]);
-        console.log(event.target.href.charAt(event.target.href.length - 1));
-        setNewState((prevState) => ({
-          clicked: "",
-          clear: "clear",
-          hovered: "",
-        }));
-        return;
-      }
-    }
+  const handleClick = (element) => {
+    setNewState(() => ({
+      ...state,
+      clicked: element,
+    }));
   };
 
-  //   const handleHover = () => {
-  //     setNewState(state.hovered);
-  //   };
+  const handleHover = (element) => {
+    setNewState(() => ({
+      ...state,
+      hovered: element,
+    }));
+  };
 
   const menu = ["New File", "New Window", "Save", "Copy", "Cut", "Delete"];
 
   return (
-    <div className="list-group mt-5">
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-0`}
-          onClick={handleClick}
-        >
-          {menu[0]}
-        </a>
+    <React.Fragment>
+        <h1 className='my-5 text-success text-center'> Lista desplegable con React</h1>
+      <div className="list-group mt-5 w-25 mx-auto border border-secondary">
+        {menu.map((el, index) => (
+          <div
+            className={` w-100 d-flex justify-content-center p-3 my-1 ${
+              state.clicked === index ? "isClicked" : ""
+            } ${state.hovered === index ? "isHovered" : ""}`}
+            datakey={index}
+            onClick={() => handleClick(index)}
+            onMouseOver={() => handleHover(index)}
+          >
+            <span>{el} </span>
+          </div>
+        ))}
       </div>
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-1`}
-          onClick={handleClick}
-        >
-          {menu[1]}
-        </a>
-      </div>
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-2`}
-          onClick={handleClick}
-        >
-          {menu[2]}
-        </a>
-      </div>
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-3`}
-          onClick={handleClick}
-        >
-          {menu[3]}
-        </a>
-      </div>
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-4`}
-          onClick={handleClick}
-        >
-          {menu[4]}
-        </a>
-      </div>
-      <div className="list-group-item w-25 mx-auto px-auto">
-        <a
-          className={`list-Item ${state.clicked} ${state.clear} ${state.hovered}`}
-          href={`#list-item-5`}
-          onClick={handleClick}
-        >
-          {menu[5]}
-        </a>
-      </div>
-    </div>
+    </React.Fragment>
   );
 }
