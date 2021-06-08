@@ -26,18 +26,18 @@ function deleteByID (userID) {
     return Users.findByIdAndRemove(userID)
 }
 
-async function login (email, password) {
-    const userFound = await Users.findOne({email})
+    async function login (email, password) {
+        const userFound = await Users.findOne({email})
 
-    if (!userFound) {
-        throw new Error('Invalid data')
+        if (!userFound) {
+            throw new Error('Invalid data')
+        }
+        const isValidPsw = await bcrypt.compare(password, userFound.password) //Regresa un true si son iguales
+
+        if (!isValidPsw) throw  new Error ('Invalid data')
+
+        return jwt.sign({ id : userFound._id})
     }
-    const isValidPsw = await bcrypt.compare(password, userFound.password) //Regresa un true si son iguales
-
-    if (!isValidPsw) throw  new Error ('Invalid data')
-
-    return jwt.sign({ id : userFound._id})
-}
 
 
 

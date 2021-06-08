@@ -1,0 +1,76 @@
+.card-body{
+    background-color: #0F69B7;
+    color: white;
+    width: 150px;
+    height: 200px;
+    border-radius: 5%;
+}
+
+.card-number{
+    border:0;
+    background-color: #0F69B7;
+    color: lightgray;
+    font-size: 1.5rem;
+    display: block;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    letter-spacing: .2rem;
+    width: 90%;
+}
+
+.card-name{
+    border:0;
+    background-color: #0F69B7;
+    color: lightgray;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    width: 50%
+}
+
+.date-container{
+    width: 15%;
+    margin-left: 7rem;
+    margin-top: 2rem;
+
+}
+
+.valid-thru{
+    border:0;
+    background-color: #0F69B7;
+    color: lightgray;
+    font-size: .5rem;
+}
+
+.card-date{
+    border:0;
+    background-color: #0F69B7;
+    color: lightgray;
+}
+
+.card-cvc{
+    border:0;
+    background-color: #0F69B7;
+    color: lightgray;
+    position: relative;
+    bottom: 7rem;
+    left: 23rem;
+    width: 15%;
+}
+
+@keyframes rotate {
+    from{
+        transform: matrix3d(0);
+    }
+    to{
+        transform: matrix3d(360);
+    }
+}
+
+.animation{
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-delay: 0s;
+}

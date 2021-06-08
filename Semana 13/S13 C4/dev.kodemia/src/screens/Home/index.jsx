@@ -13,7 +13,7 @@ export default function Home() {
       <div>
         <Counter />
         <Header />
-      </div>
+      </div>    
       <div className="total-container container-fluid">
         <div className="row">
           <LeftAside />
