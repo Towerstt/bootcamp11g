@@ -12,7 +12,7 @@ function auth(request, response, next) {
         if (!isValidToken) {
             throw new Error('Not Authorized')
         }    
-        next()
+        next(isValidToken)
 
     } catch (error) {
         response.status(401)

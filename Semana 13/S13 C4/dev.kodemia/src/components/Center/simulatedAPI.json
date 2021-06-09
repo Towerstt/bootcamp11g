@@ -1,0 +1,24 @@
+{
+    "postId" : 1,
+    "post" : {
+        "user" : {
+            "image" : "https://res.cloudinary.com/practicaldev/image/fetch/s--ivD2q6cD--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/600844/618bf69b-a4e0-4483-8668-22ce6270a1f7.png",
+            "username" : "Joseph Maurer",
+            "date" : "May 31"
+        },
+        "post" : {
+            "title" : "Getting a URL Parameter in Javascript",
+            "hashtags" : [
+                "#todayilearned",
+                "#webdev",
+                "#javascript",
+                "#programming"
+            ],
+            "footer" : {
+                "likes" : "3",
+                "comments" : "Add a",
+                "time" : "3"
+            }
+        }
+    }
+} 
