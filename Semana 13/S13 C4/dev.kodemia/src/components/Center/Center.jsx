@@ -22,7 +22,7 @@ class GeneralContainer extends React.Component {
               src="https://res.cloudinary.com/practicaldev/image/fetch/s--RSxS3HFH--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5r666r2r0lceigbl5wyf.png"
               alt="Card cap"
             />
-            <div class="card-body">
+            <div class="card-body w-100">
               <UserData
                 className={Styles.userPic}
                 src="https://res.cloudinary.com/practicaldev/image/fetch/s--R7MEvLfK--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/624270/b4ca9987-1321-47d2-bade-0359fef0b51d.png"
@@ -52,7 +52,7 @@ class GeneralContainer extends React.Component {
           </AppCard>
 
           <AppCard>
-            <div class="card-body">
+            <div class="card-body w-100">
               <UserData
                 className={Styles.userPic}
                 src="https://res.cloudinary.com/practicaldev/image/fetch/s--ivD2q6cD--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/600844/618bf69b-a4e0-4483-8668-22ce6270a1f7.png"
@@ -82,7 +82,7 @@ class GeneralContainer extends React.Component {
           </AppCard>
 
           <AppCard>
-            <div class="card-body">
+            <div class="card-body w-100">
               <UserData
                 className={Styles.userPic}
                 src="https://res.cloudinary.com/practicaldev/image/fetch/s--VcYdgRi1--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/633045/0021102c-84fc-441e-9bb3-89d6c67bad2b.jpeg"
