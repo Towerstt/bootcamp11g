@@ -34,7 +34,7 @@ function AppLoading2(props) {
   const [active, setActive] = useState(true);
   setTimeout(() => {
     setActive(false);
-  }, 5000);
+  }, 2000);
 
   const isActive = active ? Styles.active : "";
   return (

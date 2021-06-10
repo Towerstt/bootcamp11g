@@ -12,6 +12,7 @@ import "./styles/index.css";
 
 import Login from './screens/Login/index'
 import LoginClass from "./screens/Login/indexClass";
+import CharDetail from "./screens/CharDetail";
 
 import Excercises from './screens/Excercises'
 
@@ -39,6 +40,9 @@ class App extends React.Component {
           <Route exact path='/login-class' component={LoginClass}/>
           <Route exact path='/excercises'>
             <Excercises />
+          </Route>
+          <Route exact path='/char-detail/:id'>
+            <CharDetail />
           </Route>
         </Switch>
       </div>
