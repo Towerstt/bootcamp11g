@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 export default function CharDetail() {
   const url = window.location.href;
   const charId = url.split("/")[4];
-  console.log(charId);
 
   const [data, setData] = useState({});
 
@@ -11,6 +10,7 @@ export default function CharDetail() {
     fetch(`https://rickandmortyapi.com/api/character/${charId}`)
       .then((response) => response.json())
       .then((data) => setData(data));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(data);
