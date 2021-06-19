@@ -7,7 +7,7 @@ export default function Login () {
 
     const history = useHistory() //Método que contiene el historial. Es un hook global
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = async (event) =>{
         event.preventDefault()
         setTimeout(() =>{
             history.push('/') //Después del click en el botón, reenvía al parámetro dado, en este caso, al home

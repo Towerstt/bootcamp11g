@@ -1,0 +1,6 @@
+applications:
+- name: hola-mundo #Identificador único de la aplicación
+  random-route: true #Conserva el nombre de identificador en la organización pero le asigna una ruta distinta
+  memory: 32M #Memoria que le pediremos al servidor (nube) que reserve para ello
+  stack: cflinuxfs3 #(Pila) Instala el sistema de archivos en el servidor - Cloud Foundry Linux File System (versión) 3
+  buildpack: staticfile_buildpack #Carga los buildpacks que necesitemos
